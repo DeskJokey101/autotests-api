@@ -1,4 +1,4 @@
-# This is a sample Python script.
+д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# This is a sample Python script.
 
 # Press Ctrl+F5 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
@@ -7,7 +7,7 @@
 def print_hi(name):
     # Use a breakpoint in the code line below to debug your script.
     print(f'Hi, {name}')  # Press F9 to toggle the breakpoint.
-
+    print("Hello from GITHUB Desktop!")
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
