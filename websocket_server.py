@@ -11,7 +11,9 @@ async def echo(websocket: ServerConnection):
     async for message in websocket:
         print(f'Полученно сообщение: {message}')
         response = f'Сервер получил: {message}'
-        await websocket.send(response)
+
+        for _ in range(5):
+            await websocket.send(response)
 
 
 async def main():
