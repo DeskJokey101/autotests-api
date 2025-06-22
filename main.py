@@ -1,4 +1,4 @@
-д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# This is a sample Python script.
+# This is a sample Python script.
 
 # Press Ctrl+F5 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.

@@ -2,6 +2,16 @@ from clients.api_client import APIClient
 from httpx import Response
 from typing import TypedDict
 
+from clients.private_http_builder import AuthenticationUserDict, get_private_http_client
+from grpc_client import response
+
+class File(TypedDict):
+    id: str
+    url: str
+    filename: str
+    directory: str
+
+
 
 class CreateFileRequestDict(TypedDict):
     """
@@ -10,6 +20,10 @@ class CreateFileRequestDict(TypedDict):
     filename: str
     directory: str
     upload_file: str
+
+
+class CreateFileResponseDict(TypedDict):
+    file: File
 
 
 class FilesClient(APIClient):
@@ -45,3 +59,17 @@ class FilesClient(APIClient):
         :return: Ответ от сервера в виде объекта httpx.Response
         """
         return self.delete(f'/api/v1/files/{file_id}')
+
+
+    def create_file(self, request: CreateFileRequestDict) -> CreateFileResponseDict:
+        response = self.create_file_api(request)
+        return response.json()
+
+# Добавляем builder для FilesClient
+def get_files_client(user: AuthenticationUserDict) -> FilesClient:
+    """
+    Функция создаёт экземпляр FilesClient с уже настроенным HTTP-клиентом.
+
+    :return: Готовый к использованию FilesClient.
+    """
+    return FilesClient(client=get_private_http_client())
